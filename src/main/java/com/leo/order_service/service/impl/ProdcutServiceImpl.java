@@ -1,5 +1,6 @@
 package com.leo.order_service.service.impl;
 
+import com.google.common.base.Preconditions;
 import com.leo.order_service.model.ProductOrder;
 import com.leo.order_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,8 @@ public class ProdcutServiceImpl implements ProductService {
 
     @Override
     public ProductOrder save(Integer userId, Integer productId) {
-
-        Object forObject = restTemplate.getForObject("http://product-service/api/v1/product/find?id=" + productId, Object.class);
-        System.out.println(forObject);
-        ProductOrder productOrder = new ProductOrder();
+        ProductOrder productOrder = restTemplate.getForObject("http://product-service/api/v1/product/find?id=" + productId, ProductOrder.class);
+        Preconditions.checkNotNull(productOrder);
         productOrder.setCreateTime(LocalDateTime.now());
         productOrder.setUserId(userId);
         productOrder.setTradeNo(UUID.randomUUID().toString());

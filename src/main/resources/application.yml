@@ -16,3 +16,12 @@ spring:
 product-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# 修改调用超时时间，单位ms, 大部分超时时间不超过2s
+# openFeign options 默认超时时间是60s，但是由于有熔断Hystrix，所以1s就凉了
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000

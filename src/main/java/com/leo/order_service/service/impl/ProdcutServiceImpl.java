@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -18,11 +19,14 @@ public class ProdcutServiceImpl implements ProductService {
 
     @Override
     public ProductOrder save(Integer userId, Integer productId) {
-        ProductOrder productOrder = restTemplate.getForObject("http://product-service/api/v1/product/find?id=" + productId, ProductOrder.class);
-        Preconditions.checkNotNull(productOrder);
+        Map map = restTemplate.getForObject("http://product-service/api/v1/product/find?id=" + productId, Map.class);
+        Preconditions.checkNotNull(map);
+        ProductOrder productOrder = new ProductOrder();
         productOrder.setCreateTime(LocalDateTime.now());
         productOrder.setUserId(userId);
         productOrder.setTradeNo(UUID.randomUUID().toString());
+        productOrder.setProductName(map.get("name").toString());
+        productOrder.setPrice(map.get("price").toString());
         return productOrder;
     }
 }

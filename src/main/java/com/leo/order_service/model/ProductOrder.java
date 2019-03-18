@@ -14,10 +14,9 @@ import java.time.LocalDateTime;
 public class ProductOrder implements Serializable {
     private static final long serialVersionUID = 2803253748446959752L;
     private Integer id;
-    @JsonProperty("name")
     private String productName;
     private String tradeNo;
-    private Integer price;
+    private String price;
     private LocalDateTime createTime;
     private Integer userId;
 }

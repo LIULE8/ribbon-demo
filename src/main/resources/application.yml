@@ -1,24 +1,24 @@
 server:
   port: 8781
 
-# Ö¸¶¨×¢²áÖĞĞÄ
+# æŒ‡å®šæ³¨å†Œä¸­å¿ƒ
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-# Ö¸¶¨µ±Ç°·şÎñµÄÃû³Æ
+# æŒ‡å®šå½“å‰æœåŠ¡çš„åç§°
 spring:
   application:
     name: order-service
 
-# Server¶Ë£¬ÉèÖÃ ribbon ²ßÂÔ (×Ô¶¨Òå¸ºÔØ¾ùºâ²ßÂÔ)
+# Serverç«¯ï¼Œè®¾ç½® ribbon ç­–ç•¥ (è‡ªå®šä¹‰è´Ÿè½½å‡è¡¡ç­–ç•¥)
 product-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
-# ĞŞ¸Äµ÷ÓÃ³¬Ê±Ê±¼ä£¬µ¥Î»ms, ´ó²¿·Ö³¬Ê±Ê±¼ä²»³¬¹ı2s
-# openFeign options Ä¬ÈÏ³¬Ê±Ê±¼äÊÇ60s£¬µ«ÊÇÓÉÓÚÓĞÈÛ¶ÏHystrix£¬ËùÒÔ1s¾ÍÁ¹ÁË
+# ä¿®æ”¹è°ƒç”¨è¶…æ—¶æ—¶é—´ï¼Œå•ä½ms, å¤§éƒ¨åˆ†è¶…æ—¶æ—¶é—´ä¸è¶…è¿‡2s
+# openFeign options é»˜è®¤è¶…æ—¶æ—¶é—´æ˜¯60sï¼Œä½†æ˜¯ç”±äºæœ‰ç†”æ–­Hystrixï¼Œæ‰€ä»¥1så°±å‡‰äº†
 feign:
   client:
     config:

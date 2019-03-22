@@ -23,7 +23,7 @@ public class OrderController {
     public Object save(@RequestParam("user_id") Integer userId,
                        @RequestParam("product_id") Integer productId) {
         Map<String, Object> msg = Maps.newHashMap();
-        msg.put("code", -1);
+        msg.put("code", 0);
         msg.put("data", orderService.save(userId, productId));
         return msg;
     }
